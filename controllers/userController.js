@@ -1,12 +1,9 @@
-<!-- controllers/userController.js -->
-<script type="module">
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
 import { users } from '../models/userModel.js'
 
-// helper: パスワードを含まないユーザー表示用
 const sanitize = (u) => ({ id: u.id, username: u.username, email: u.email })
 
 export const registerUser = async (req, res) => {
@@ -21,7 +18,7 @@ export const registerUser = async (req, res) => {
     const newUser = { id: users.length ? Math.max(...users.map(u => u.id)) + 1 : 1, username, email, password: hashed }
     users.push(newUser)
     return res.status(201).json({ message: '登録成功', user: sanitize(newUser) })
-  } catch (err) {
+  } catch {
     return res.status(500).json({ message: 'サーバーエラー' })
   }
 }
@@ -46,7 +43,6 @@ export const loginUser = async (req, res) => {
 
 export const getUser = (req, res) => {
   const id = parseInt(req.params.id)
-  // 認証後、アクセスユーザーと対象IDが一致するかチェック（要件によって管理者化など拡張可）
   if (req.userId !== id) return res.status(403).json({ message: '他人の情報にはアクセスできない' })
 
   const user = users.find(u => u.id === id)
@@ -79,4 +75,3 @@ export const deleteUser = (req, res) => {
   users.splice(idx, 1)
   return res.json({ message: '削除成功' })
 }
-</script>
