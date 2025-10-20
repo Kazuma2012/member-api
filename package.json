@@ -1,5 +1,3 @@
-<!-- package.json の一部（参考） -->
-<script>
 {
   "name": "member-api",
   "version": "1.0.0",
@@ -15,4 +13,3 @@
     "jsonwebtoken": "^9.0.0"
   }
 }
-</script>
