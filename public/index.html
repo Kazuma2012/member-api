@@ -1,0 +1,39 @@
+<!-- public/index.html -->
+<script>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>会員システム - ログイン/登録</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 460px; margin: 40px auto; }
+    .box { border: 1px solid #ddd; padding: 16px; margin-bottom: 18px; border-radius: 8px; }
+    input { width: 100%; padding: 8px; margin: 8px 0; }
+    button { width: 100%; padding: 10px; border: none; border-radius: 6px; cursor: pointer; }
+    .msg { color: #d33; }
+  </style>
+</head>
+<body>
+  <h2>会員システム</h2>
+
+  <div class="box">
+    <h3>新規登録</h3>
+    <input id="regUsername" placeholder="ユーザー名" />
+    <input id="regEmail" placeholder="メール" />
+    <input id="regPassword" type="password" placeholder="パスワード" />
+    <button onclick="register()">登録</button>
+  </div>
+
+  <div class="box">
+    <h3>ログイン</h3>
+    <input id="loginEmail" placeholder="メール" />
+    <input id="loginPassword" type="password" placeholder="パスワード" />
+    <button onclick="login()">ログイン</button>
+  </div>
+
+  <p id="message" class="msg"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
+</script>
